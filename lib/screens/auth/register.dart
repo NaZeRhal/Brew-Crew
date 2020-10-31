@@ -21,8 +21,6 @@ class _RegisterState extends State<Register> {
   //for showing LoadingSpinner
   bool isLoading = false;
 
-//comment
-
   //text fields
   String email = '';
   String password = '';
