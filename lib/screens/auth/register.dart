@@ -106,11 +106,11 @@ class _RegisterState extends State<Register> {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     Text(
                       error,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.redAccent, fontSize: 14),
+                      style: TextStyle(color: Colors.redAccent, fontSize: 12),
                     )
                   ],
                 ),
