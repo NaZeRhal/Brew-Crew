@@ -11,7 +11,7 @@ class AuthService {
   }
 
 //auth change user stream
-//как раз как роисходит signin или signout запускается этот метод
+//каждый раз как происходит signin или signout запускается этот метод
 //и в стриме передает юзера или null
   Stream<CustomUser> get getUserStream {
     return _firebaseAuth.authStateChanges().map(_createCustomUser);
