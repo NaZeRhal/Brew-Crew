@@ -11,10 +11,10 @@ class BrewList extends StatefulWidget {
 class _BrewListState extends State<BrewList> {
   @override
   Widget build(BuildContext context) {
-    final List<Brew> brewList = Provider.of<List<Brew>>(context);
-    if (brewList != null) {
-      brewList.forEach(print);
-    }
+    final List<Brew> brewList = Provider.of<List<Brew>>(context) ?? [];
+    // if (brewList != null) {
+    //   brewList.forEach(print);
+    // }
     return ListView.builder(
       itemBuilder: (context, index) {
         return BrewTile(brew: brewList[index]);
