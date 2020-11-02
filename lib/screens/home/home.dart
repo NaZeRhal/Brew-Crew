@@ -1,4 +1,5 @@
 import 'package:brew_crew/models/brew.dart';
+import 'package:brew_crew/screens/home/settings_form.dart';
 import 'package:brew_crew/services/auth.dart';
 import 'package:brew_crew/services/database.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,17 @@ class Home extends StatelessWidget {
   final AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
+    void _showSettingsPanel() {
+      showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+              child: SettingsForm(),
+            );
+          });
+    }
+
     return StreamProvider<List<Brew>>.value(
       value: DatabaseService().brews,
       child: Scaffold(
@@ -20,6 +32,7 @@ class Home extends StatelessWidget {
           elevation: 0.0,
           actions: [
             FlatButton.icon(
+              textColor: Colors.white,
               onPressed: () async {
                 await _authService.signOut();
                 print('User signed out');
@@ -27,6 +40,12 @@ class Home extends StatelessWidget {
               icon: Icon(Icons.person),
               label: Text('logout'),
             ),
+            FlatButton.icon(
+              textColor: Colors.white,
+              onPressed: () => _showSettingsPanel(),
+              icon: Icon(Icons.settings),
+              label: Text('settings'),
+            )
           ],
         ),
         body: BrewList(),
